@@ -1,0 +1,4 @@
+/* Removed default centered App styling */
+.App {
+  min-height: 100vh;
+}
