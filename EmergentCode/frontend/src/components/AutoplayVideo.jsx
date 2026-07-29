@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export function AutoplayVideo({ videoId }: { videoId: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+export default function AutoplayVideo({ videoId }) {
+  const ref = useRef(null);
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function AutoplayVideo({ videoId }: { videoId: string }) {
           obs.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.25 }
     );
     obs.observe(ref.current);
     return () => obs.disconnect();
@@ -24,7 +24,7 @@ export function AutoplayVideo({ videoId }: { videoId: string }) {
   return (
     <section className="bg-white">
       <div className="mx-auto w-[min(1180px,calc(100%-40px))] py-16">
-        <div ref={ref} className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(15,23,42,0.15)]">
+        <div ref={ref} className="relative aspect-video w-full overflow-hidden rounded-2xl" style={{ boxShadow: "0 20px 50px rgba(15,23,42,0.15)" }}>
           {play && (
             <iframe
               className="absolute inset-0 h-full w-full"
